@@ -117,6 +117,8 @@ export const Component: React.FC<ComponentProps> = ({
     }
   }, [component, transform]);
 
+  useEffect(() => () => component && component.dispose(), [component])
+
   return (
     <>
       {component && (
