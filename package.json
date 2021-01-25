@@ -15,8 +15,6 @@
     "test": "jest",
     "test:ci": "npm run test -- --verbose --ci",
     "test:watch": "npm run test -- --watch",
-    "prepare": "npm run ngl-dts --",
-    "ngl-dts": "cd modules/ngl && npm ci --ignore-scripts && npx tsc --project . -d --declarationDir ../../src/@types/ngl/declarations --emitDeclarationOnly --skipLibCheck",
     "prebuild": "npm run clean --",
     "build": "tsc",
     "postbuild": "cp -r ./src/@types ./dist",
@@ -24,7 +22,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages --out=storybook-static",
-    "deploy-storybook:ci": "npm run deploy-storybook -- --ci"
+    "deploy-storybook:ci": "npm run deploy-storybook -- --ci",
+    "watch": "tsc -w"
   },
   "repository": {
     "type": "git",
@@ -48,10 +47,12 @@
   },
   "dependencies": {
     "@n1ru4l/use-async-effect": "^1.2.4",
+    "three": "^0.111.0"
+  },
+  "peerDependencies": {
     "ngl": "2.0.0-dev.37",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "three": "^0.111.0"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
