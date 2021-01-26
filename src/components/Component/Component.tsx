@@ -34,7 +34,6 @@ export const Component: React.FC<ComponentProps> = ({
   path,
   loadFileParams,
   params = ComponentDefaultParameters,
-  reprList = [],
   position = defaultPosition,
   quaternion = defaultQuaternion,
   scale = defaultScale,
@@ -86,15 +85,6 @@ export const Component: React.FC<ComponentProps> = ({
       }
     }
   }, [component, params]);
-
-  useEffect(() => {
-    if (component) {
-      component.removeAllRepresentations();
-      reprList.forEach((repr) =>
-        component.addRepresentation(repr.type, repr.params)
-      );
-    }
-  }, [component, reprList]);
 
   useEffect(() => {
     if (component) {
